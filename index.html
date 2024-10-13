@@ -39,14 +39,18 @@
 <script>
 	const DAYS = ['Ut', 'St', 'Ct', 'Pa', 'So', 'Ne', 'Po']
 
-	setInterval(update, 60_000)
+	setInterval(update, 60000)
 
 	function update() {
 		const now = new Date()
 		const date = `${DAYS[now.getDay()]} ${now.getDate()}/${now.getMonth() + 1}`
-		const time = `${now.getHours()}:${now.getMinutes()}`
+		const time = `${now.getHours()}:${to2Digits(now.getMinutes())}`
 
 		document.getElementById('date').innerText = date
 		document.getElementById('time').innerText = time
+	}
+
+	function to2Digits(n) {
+		return n < 10 ? `0${n}` : n
 	}
 </script>
